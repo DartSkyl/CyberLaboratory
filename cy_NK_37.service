@@ -1,0 +1,11 @@
+[Unit]
+Description=NK-37
+
+[Service]
+Type=simple
+Restart=always
+ExecStart=/home/revad/env/bin/python /home/revad/ricochet-chat-bot-back/main.py
+OOMScoreAdjust=-1000
+
+[Install]
+WantedBy=multi-user.target
