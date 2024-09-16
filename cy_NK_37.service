@@ -4,7 +4,8 @@ Description=NK-37
 [Service]
 Type=simple
 Restart=always
-ExecStart=/home/revad/env/bin/python /home/revad/ricochet-chat-bot-back/main.py
+WorkingDirectory=/home/revmin/
+ExecStart=/home/revad/env/bin/python /home/revad/ricochet-chat-bot-back/tg_interface.py
 OOMScoreAdjust=-1000
 
 [Install]

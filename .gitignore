@@ -2,3 +2,4 @@
 /.venv/
 /bot.log
 __pycache__/
+/tokens_example.txt
