@@ -31,7 +31,7 @@ vector_store = FAISS.from_documents(document, embedding=embedding)
 store = vector_store.as_retriever(search_kwargs={'k': 1})
 chat_history = []
 
-with open('prompt.txt', 'r', encoding='utf-8') as file:
+with open('prompt_2.txt', 'r', encoding='utf-8') as file:
     prompt_text = file.read()
 
 
