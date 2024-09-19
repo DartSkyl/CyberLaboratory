@@ -35,7 +35,9 @@ class FirstMessage:
         self._scheduler = AsyncIOScheduler(gconfig={'apscheduler.timezone': 'Europe/Moscow'})
         # Если с последней проверки время не изменилось, значит запросов не было и нужно его сделать
         self.last_msg_time = int(time.time())
-        self.previous_value = int(time.time())
+        self.previous_value = self.last_msg_time
+        print(self.previous_value)
+
 
     async def start_checker(self):
         self._scheduler.start()
