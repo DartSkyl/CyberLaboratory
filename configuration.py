@@ -13,6 +13,7 @@ YC_IAM_TOKEN = os.getenv('YC_IAM_TOKEN')
 MODEL_URI = os.getenv('model_uri')
 FOLDER_ID = os.getenv('folder_id')
 TG_TOKEN = os.getenv('TG_TOKEN')
+MAX_TOKENS = int(os.getenv('max_tokens'))
 
 logging.basicConfig(
     filename='bot.log',

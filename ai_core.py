@@ -10,13 +10,13 @@ from langchain.chains import create_retrieval_chain
 from langchain.chains.combine_documents import create_stuff_documents_chain
 import asyncio
 
-from configuration import MODEL_URI, FOLDER_ID
+from configuration import MODEL_URI, FOLDER_ID, MAX_TOKENS
 
 
 load_dotenv()
 
 # Задаем модель чата
-chat_model = YandexGPT(model_uri=MODEL_URI, max_tokens=1000)
+chat_model = YandexGPT(model_uri=MODEL_URI, max_tokens=MAX_TOKENS)
 
 # Формируем векторную базу данных на основе текстового документа
 loader = TextLoader(file_path='roles_info/company_info.txt', encoding='utf-8')
@@ -47,6 +47,9 @@ async def process_chat(user_input, chat_history_list):
 
     response = (await create_prompt()).invoke({
         'input': user_input,
+
+        # История чата отключается через пустой список
+
         'chat_history': chat_history_list,
     })
     return response['answer']
