@@ -29,7 +29,7 @@ chat_history = []
 
 
 async def create_prompt():
-    async with open('roles_prompts/prompt_2.txt', 'r', encoding='utf-8') as file:
+    async with open('roles_prompts/prompt.txt', 'r', encoding='utf-8') as file:
         prompt_text = file.read()
     prompt = ChatPromptTemplate.from_messages([
         ('system', prompt_text),
