@@ -14,9 +14,9 @@ MODEL_URI = os.getenv('model_uri')
 FOLDER_ID = os.getenv('folder_id')
 TG_TOKEN = os.getenv('TG_TOKEN')
 
-# logging.basicConfig(
-#     filename='bot.log',
-#     filemode='a',
-#     format="%(asctime)s %(levelname)s %(message)s"
-# )
-# logging.getLogger().setLevel(logging.ERROR)
+logging.basicConfig(
+    filename='bot.log',
+    filemode='a',
+    format="%(asctime)s %(levelname)s %(message)s"
+)
+logging.getLogger().setLevel(logging.INFO)

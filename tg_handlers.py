@@ -15,7 +15,6 @@ chat_history = []
 @dp.message(Command('start'))
 async def start_command(msg: Message):
     await token_refresher.set_last_msg_time()
-    print('Hello, world!')
     ai_answer = await process_chat('Привет', chat_history)
     await msg.answer(ai_answer)
     chat_history.append(HumanMessage(content='Привет'))

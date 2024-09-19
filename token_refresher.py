@@ -1,5 +1,6 @@
 import time
 import asyncio
+import logging
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from langchain_community.llms import YandexGPT
 from langchain_core.prompts import PromptTemplate
@@ -12,15 +13,12 @@ load_dotenv()
 
 async def check_last_msg_time():
     if token_refresher.last_msg_time == token_refresher.previous_value:
-        print('\n\nNo, before', token_refresher.last_msg_time)
-        print(token_refresher.chain.invoke({'country': token_refresher.country}))
+        token_refresher.chain.invoke({'country': token_refresher.country})
         token_refresher.previous_value = int(time.time())
         token_refresher.last_msg_time = token_refresher.previous_value
-        print('\nNo, after', token_refresher.last_msg_time)
 
     else:
         token_refresher.previous_value = token_refresher.last_msg_time
-        print('\n\nYes', token_refresher.previous_value)
 
 
 class FirstMessage:
@@ -36,7 +34,6 @@ class FirstMessage:
         # Если с последней проверки время не изменилось, значит запросов не было и нужно его сделать
         self.last_msg_time = int(time.time())
         self.previous_value = self.last_msg_time
-        print(self.previous_value)
 
 
     async def start_checker(self):
