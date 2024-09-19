@@ -6,6 +6,7 @@ from langchain_core.messages import HumanMessage, AIMessage
 
 from loader import dp
 from ai_core import process_chat
+from token_refresher import token_refresher
 
 
 chat_history = []
@@ -13,6 +14,7 @@ chat_history = []
 
 @dp.message(Command('start'))
 async def start_command(msg: Message):
+    await token_refresher.set_last_msg_time()
     ai_answer = await process_chat('Привет', chat_history)
     await msg.answer(ai_answer)
     chat_history.append(HumanMessage(content='Привет'))
