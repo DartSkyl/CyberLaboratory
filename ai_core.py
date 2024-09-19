@@ -1,7 +1,5 @@
-from langchain.chains import LLMChain
 from langchain_community.llms import YandexGPT
 from langchain_community.embeddings.yandex import YandexGPTEmbeddings
-from langchain_core.prompts import PromptTemplate
 from dotenv import load_dotenv
 from langchain_community.document_loaders import TextLoader
 from langchain_community.vectorstores.faiss import FAISS
@@ -29,11 +27,10 @@ vector_store = FAISS.from_documents(document, embedding=embedding)
 store = vector_store.as_retriever(search_kwargs={'k': 1})
 chat_history = []
 
-with open('roles_prompts/prompt_2.txt', 'r', encoding='utf-8') as file:
-    prompt_text = file.read()
-
 
 async def create_prompt():
+    async with open('roles_prompts/prompt_2.txt', 'r', encoding='utf-8') as file:
+        prompt_text = file.read()
     prompt = ChatPromptTemplate.from_messages([
         ('system', prompt_text),
         MessagesPlaceholder(variable_name='chat_history'),
@@ -68,5 +65,4 @@ async def start_up():
 
 
 if __name__ == '__main__':
-
     asyncio.run(start_up())

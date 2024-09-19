@@ -1,6 +1,4 @@
 import time
-import asyncio
-import logging
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from langchain_community.llms import YandexGPT
 from langchain_core.prompts import PromptTemplate
@@ -22,6 +20,9 @@ async def check_last_msg_time():
 
 
 class FirstMessage:
+    """Проверяем когда был последний запрос. Если когда и предыдущий,
+    то делаем минимальный запрос, что бы обновить токен. Что бы не грузить запрос
+    для обновления токена создадим отдельную цепочку"""
     def __init__(self):
         # Отдельно пропишем максимально простую цепочку
         self.template = "What is the capital of {country}?"
@@ -34,7 +35,6 @@ class FirstMessage:
         # Если с последней проверки время не изменилось, значит запросов не было и нужно его сделать
         self.last_msg_time = int(time.time())
         self.previous_value = self.last_msg_time
-
 
     async def start_checker(self):
         self._scheduler.start()
