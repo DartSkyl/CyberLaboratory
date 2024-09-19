@@ -16,7 +16,7 @@ from configuration import MODEL_URI, FOLDER_ID
 load_dotenv()
 
 # Задаем модель чата
-chat_model = YandexGPT(model_uri=MODEL_URI)
+chat_model = YandexGPT(model_uri=MODEL_URI, max_tokens=1000)
 
 # Формируем векторную базу данных на основе текстового документа
 loader = TextLoader(file_path='roles_info/company_info.txt', encoding='utf-8')
