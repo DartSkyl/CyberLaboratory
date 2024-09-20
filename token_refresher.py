@@ -3,7 +3,7 @@ from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from langchain_community.llms import YandexGPT
 from langchain_core.prompts import PromptTemplate
 from dotenv import load_dotenv
-from configuration import MODEL_URI
+from configuration import MODEL_URI, TOKEN_REFRESH
 
 
 load_dotenv()
@@ -42,7 +42,7 @@ class FirstMessage:
             func=check_last_msg_time,
             kwargs={},
             trigger='interval',
-            hours=3,
+            hours=TOKEN_REFRESH,
             # seconds=20,
             max_instances=1,
         )
