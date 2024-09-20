@@ -37,8 +37,8 @@ async def add_record_1(msg: Message, state: FSMContext):
 
 @dp.message(States.add_record)
 async def add_record_2(msg: Message, state: FSMContext):
-    added_record = f'\n\n\n***** Новая запись от {datetime.datetime.now()} *****\n\n\n'
-    added_record += msg.text
+    added_record = f'\n\n***** Новая запись от {datetime.datetime.now()} *****\n\n\n'
+    added_record += msg.text + '\n'
     with open('notes.txt', 'a', encoding='utf-8') as file:
         file.write(added_record)
     await msg.answer('Запись добавлена')

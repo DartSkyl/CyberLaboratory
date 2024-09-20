@@ -14,6 +14,7 @@ MODEL_URI = os.getenv('model_uri')
 FOLDER_ID = os.getenv('folder_id')
 TG_TOKEN = os.getenv('TG_TOKEN')
 MAX_TOKENS = int(os.getenv('max_tokens'))
+TOKEN_REFRESH = int(os.getenv('token_refresh'))
 
 logging.basicConfig(
     filename='bot.log',
