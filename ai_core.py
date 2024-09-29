@@ -52,6 +52,7 @@ async def process_chat(user_input, chat_history_list):
 
         'chat_history': chat_history_list,
     })
+    print(response)
     return response['answer']
 
 
