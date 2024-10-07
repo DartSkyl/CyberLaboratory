@@ -34,6 +34,6 @@ async def work_sheet_actions(callback: CallbackQuery):
                                                                            await work_sheet.get_pause_status()))
     else:
         count_time = await work_sheet.stop_work()
-        msg_text = f'Сегодня отработано <b><i>{count_time}</i></b>'
+        msg_text = f'Сегодня отработано *_{count_time}_*'
         await callback.message.delete()
         await callback.message.answer(msg_text, reply_markup=main_menu)

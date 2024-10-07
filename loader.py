@@ -12,7 +12,7 @@ from telegram_module.database import BotBase
 
 
 db = BotBase(DB_INFO[0], DB_INFO[1], DB_INFO[2], DB_INFO[3])
-bot = Bot(token=TG_TOKEN, default=DefaultBotProperties(parse_mode=ParseMode.HTML))
+bot = Bot(token=TG_TOKEN, default=DefaultBotProperties(parse_mode=ParseMode.MARKDOWN_V2))
 dp = Dispatcher(bot=bot, storage=MemoryStorage())
 
 

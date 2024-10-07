@@ -18,7 +18,7 @@ class WorkSheet:
     async def convert_time(self):
         """Конвертируем секунды в часы и минуты"""
         count_time = await self.get_worked_time_count()
-        convert_time = f'<b><i>{count_time // 3600} ч. {(count_time % 3600) // 60} мин. {(count_time % 3600) % 60} сек.</i></b>'
+        convert_time = f'*_{count_time // 3600} ч\. {(count_time % 3600) // 60} мин\. {(count_time % 3600) % 60} сек\._*'
         return convert_time
 
     async def info_string(self):
@@ -54,7 +54,7 @@ class WorkSheet:
         self.count_pause_time = 0
         self.work_status = False
         self.pause_status = False
-        return f'<b><i>{self.count_work_time // 3600} ч. {(self.count_work_time % 3600) // 60} мин. {(self.count_work_time % 3600) % 60} сек.</i></b>'
+        return f'*_{self.count_work_time // 3600} ч\. {(self.count_work_time % 3600) // 60} мин\. {(self.count_work_time % 3600) % 60} сек\._*'
 
     async def get_work_status(self):
         """Возвращает статус работы"""
