@@ -12,7 +12,7 @@ from telegram_module.database import BotBase
 
 
 db = BotBase(DB_INFO[0], DB_INFO[1], DB_INFO[2], DB_INFO[3])
-bot = Bot(token=TG_TOKEN, default=DefaultBotProperties(parse_mode=ParseMode.MARKDOWN_V2))
+bot = Bot(token=TG_TOKEN, default=DefaultBotProperties(parse_mode=ParseMode.HTML))
 dp = Dispatcher(bot=bot, storage=MemoryStorage())
 
 
@@ -22,11 +22,4 @@ async def db_connect():
     await db.check_db_structure()
 
 
-async def start_up():
-    # await db_connect()
-    dp.include_router(admin_router)
-    with open('bot.log', 'a') as log_file:
-        log_file.write(f'\n========== New bot session {datetime.datetime.now()} ==========\n\n')
-    print('Стартуем')
-    await bot.delete_my_commands()
-    await dp.start_polling(bot)
+

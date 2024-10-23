@@ -9,8 +9,9 @@ from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.chains import create_retrieval_chain
 from langchain.chains.combine_documents import create_stuff_documents_chain
 import asyncio
+import aiohttp
 
-from configuration import MODEL_URI, FOLDER_ID, MAX_TOKENS
+from configuration import MODEL_URI, FOLDER_ID, YC_API_KEY, token
 
 
 load_dotenv()
@@ -47,12 +48,9 @@ async def process_chat(user_input, chat_history_list):
 
     response = await (await create_prompt()).ainvoke({
         'input': user_input,
-
         # История чата отключается через пустой список
-
         'chat_history': chat_history_list,
     })
-    print(response)
     return response['answer']
 
 

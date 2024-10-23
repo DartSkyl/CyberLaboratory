@@ -3,7 +3,7 @@ from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from langchain_community.llms import YandexGPT
 from langchain_core.prompts import PromptTemplate
 from dotenv import load_dotenv
-from configuration import MODEL_URI, TOKEN_REFRESH
+# from configuration import MODEL_URI, TOKEN_REFRESH
 
 
 load_dotenv()
